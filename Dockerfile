@@ -8,7 +8,7 @@ docker run -d --name postgres6010 -p 5432:5432 -e POSTGRES_PASSWORD='pgpass123' 
 docker pull dpage/pgadmin4
 
 # Step 4: Build and Run pgAdmin4 Container
-docker run --name pgadmin6010 -p 82:80 -e 'PGADMIN_DEFAULT_EMAIL=herndonn19@ecu.edu' -e 'PGADMIN_DEFAULT_PASSWORD=pgapass123' -d dpage/pgadmin4
+docker run --name pgadmin6010 -p 80:80 -e 'PGADMIN_DEFAULT_EMAIL=herndonn19@ecu.edu' -e 'PGADMIN_DEFAULT_PASSWORD=pgapass123' -d dpage/pgadmin4
 
 # Step 5: Verify Executing Containers
 docker ps
