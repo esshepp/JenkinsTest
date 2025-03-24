@@ -17,7 +17,7 @@ pipeline {
             env.dockerTag = "dev-commit-${commitHash}-${BUILD_NUMBER}"
             env.gkeClusterName = 'test-cluster-1'
             env.Zone = 'us-central1-c'
-            env.gkeProject = 'YOUR_PROJECT_ID'
+            env.gkeProject = 'cloud-computing-sp25'
 
             // Build Docker image
             sh "docker build -t portfolio-app:${env.dockerTag} ."
