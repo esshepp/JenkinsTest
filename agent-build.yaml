@@ -1,17 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: dind
+  labels:
+    jenkins: agent
 spec:
   containers:
+    - name: jnlp
+      image: jenkins/inbound-agent:latest
+      args: ["$(JENKINS_SECRET)", "$(JENKINS_NAME)"]
     - name: gcloud-builder
-      image: google/cloud-sdk
-      command: ["sleep"]
-      args: ["infinity"]
-      volumeMounts:
-        - name: docker-socket
-          mountPath: /var/run/docker.sock
-  volumes:
-    - name: docker-socket
-      hostPath:
-        path: /var/run/docker.sock
+      image: google/cloud-sdk:latest
+      command:
+        - cat
+      tty: true
