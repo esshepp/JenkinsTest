@@ -49,7 +49,6 @@ pipeline {
   post {
     always {
       // Clean up the agent pod after the job completes
-      cleanWs()
       deleteDir()
     }
   }
