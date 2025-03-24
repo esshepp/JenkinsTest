@@ -1,23 +1,21 @@
-# Step 1: Pull/Download Postgres Docker Image
-docker pull postgres
+# Use an official Node.js runtime as a parent image
+FROM node:18
 
-# Step 2: Start and Run Postgres Container
-docker run -d --name postgres6010 -p 5432:5432 -e POSTGRES_PASSWORD='pgpass123' postgres
+# Install the Express Generator globally
+RUN npm install -g express-generator
 
-# Step 3: Pull/Download pgAdmin4 Docker Image
-docker pull dpage/pgadmin4
+# Create a working directory for the new app
+WORKDIR /usr/src/app
 
-# Step 4: Build and Run pgAdmin4 Container
-docker run --name pgadmin6010 -p 80:80 -e 'PGADMIN_DEFAULT_EMAIL=herndonn19@ecu.edu' -e 'PGADMIN_DEFAULT_PASSWORD=pgapass123' -d dpage/pgadmin4
+# Use the Express Generator to scaffold a new app.
+# In this example, we choose the Pug view engine.
+RUN express --view=pug .
 
-# Step 5: Verify Executing Containers
-docker ps
+# Install the app dependencies
+RUN npm install
 
-# Step 6: Access pgAdmin4 on Browser
-Go to to http://localhost:82/ and provide the required login credentials that we have configured in step 4.
+# Expose the port that the app runs on
+EXPOSE 3000
 
-# Step 7: Establish a Connection Between pgAdmin and Docker Postgres Instance
-# General>Name: PostgreSQL for 6010
-# Connection>Host name/address: 
-# Connection>Username: postgres
-# Connection>Password: pgpass123
+# Define the command to run your app using npm
+CMD [ "npm", "start" ]
