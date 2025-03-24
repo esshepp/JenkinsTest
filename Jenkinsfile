@@ -49,10 +49,10 @@ pipeline {
   }
 post {
   always {
-    node {
+    node('master') { // or replace 'master' with your appropriate node label
       cleanWs()
       deleteDir()
-      }
     }
   }
+}
 }
