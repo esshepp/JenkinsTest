@@ -47,10 +47,12 @@ pipeline {
       }
     }
   }
-  post {
-    always {
+post {
+  always {
+    node {
       cleanWs()
       deleteDir()
+      }
     }
   }
 }
