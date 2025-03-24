@@ -30,7 +30,7 @@ pipeline {
 
             // Tag and push image to GCR
             env.gcrImage = "gcr.io/${env.gkeProject}/portfolio-app:latest"
-            sh "gcrImage: ${env.gcrImage}"
+            sh "echo ${env.gcrImage}"
             sh "docker tag portfolio-app:latest ${env.gcrImage}"
             sh "docker push ${env.gcrImage}"
           }
