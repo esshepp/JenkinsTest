@@ -48,11 +48,9 @@ pipeline {
     }
   }
 post {
-  always {
-    node('master') {
+  always {  
       cleanWs()
-      deleteDir()
-    }
+      deleteDir()  
   }
 }
 }
