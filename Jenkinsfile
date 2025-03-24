@@ -23,7 +23,7 @@ pipeline {
             sh "docker build -t portfolio-app:latest ."
 
             // Authenticate to GCR using credentials (ideally using Jenkins credentials or Workload Identity)
-            withCredentials([file(credentialsId: 'gcr-kub', variable: 'SERVICE_ACCOUNT_KEY')]) {
+            withCredentials([file(credentialsId: 'gcp-kub', variable: 'SERVICE_ACCOUNT_KEY')]) {
               sh 'gcloud auth activate-service-account --key-file=$SERVICE_ACCOUNT_KEY'
               sh "gcloud auth configure-docker"
             }
