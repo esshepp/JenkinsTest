@@ -49,7 +49,7 @@ pipeline {
   }
 post {
   always {
-    node('jenkins-master') {
+    node('master') {
       cleanWs()
       deleteDir()
     }
