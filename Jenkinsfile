@@ -49,7 +49,7 @@ pipeline {
   }
 post {
   always {
-    node('jenkins-master') { // or replace 'master' with your appropriate node label
+    node('jenkins-master') {
       cleanWs()
       deleteDir()
     }
